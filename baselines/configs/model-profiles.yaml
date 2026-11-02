@@ -1,0 +1,36 @@
+profiles:
+  claude-opus-4.6:
+    harness: claude
+    model: claude-opus-4-6
+    api_key_env: CLAUDE_OPUS_4_6_API_KEY
+    base_url_env: CLAUDE_OPUS_4_6_BASE_URL
+
+  kimi-k2.6:
+    harness: claude
+    model: Pro/moonshotai/Kimi-K2.6
+    api_key_env: KIMI_K2_6_API_KEY
+    base_url_env: KIMI_K2_6_BASE_URL
+
+  glm-5.2:
+    harness: claude
+    model: zai-org/GLM-5.2
+    api_key_env: GLM_5_2_API_KEY
+    base_url_env: GLM_5_2_BASE_URL
+
+  deepseek-v4-pro:
+    harness: claude
+    model: deepseek-ai/DeepSeek-V4-Pro
+    api_key_env: DEEPSEEK_V4_PRO_API_KEY
+    base_url_env: DEEPSEEK_V4_PRO_BASE_URL
+
+  gpt-5.5:
+    harness: codex
+    model: gpt-5.5
+    api_key_env: GPT_5_5_API_KEY
+    base_url_env: GPT_5_5_BASE_URL
+
+  gpt-5.4:
+    harness: codex
+    model: gpt-5.4
+    api_key_env: GPT_5_4_API_KEY
+    base_url_env: GPT_5_4_BASE_URL

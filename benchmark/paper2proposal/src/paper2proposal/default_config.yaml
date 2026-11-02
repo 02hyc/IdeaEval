@@ -1,0 +1,21 @@
+# paper2proposal — LLM config for single-call paper-to-proposal conversion
+
+models:
+  claude-opus-4.6:
+    type: anthropic_api
+    model_id: "claude-opus-4-6"
+    api_key: "${ANTHROPIC_API_KEY}"
+    base_url: "${ANTHROPIC_BASE_URL}"  # empty -> official Anthropic API
+    # anthropic_version: "bedrock-2023-05-31"  # uncomment only for a Bedrock-backed proxy
+    num_retries: 3
+    retry_multiplier: 1.0
+    retry_start_wait: 1.0
+
+agents:
+  converter:
+    model: "claude-opus-4.6"
+    max_tokens: 64000
+    max_context_tokens: 200000
+    temperature: 0.0
+    enable_thinking: true
+    thinking_budget_tokens: 30000

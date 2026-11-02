@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Test caches
+.pytest_cache/
+
+# Local secrets
+.env
+
+# Claude Code local state
+.claude/
+
+# Runtime workspaces and run artefacts
+.runs/
+runs/
+
+# Personal input files (inputs/ideaeval_bench_inputs.json is the tracked benchmark input)
+inputs/*
+!inputs/ideaeval_bench_inputs.json
+
+# Personal scratchpad
+whiteboard.md
+
+# Skills reference
+skills_references

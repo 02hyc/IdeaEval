@@ -1,0 +1,1 @@
+# Grep tool for powerful text search using ripgrep

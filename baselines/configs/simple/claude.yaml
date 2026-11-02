@@ -1,0 +1,81 @@
+version: 1
+harness: claude
+
+model: claude-opus-4-6
+effort: max
+
+workspace:
+  root: .runs
+  run_id: null
+  agent_dir: agent_workspace
+  clean_existing: false
+
+assets:
+  root: src/research_ideation_agent/assets
+  version: simple
+
+mcp:
+  profile: scholar-gateway
+  scholar_gateway:
+    command: scholar-gateway-mcp
+    cutoff_date: "2026-06-09"
+    restrict_domains: true
+    strict_filtering: true
+    mode: rules
+    format: markdown
+    references_dir: references
+    required_env_vars:
+      - WTS_API_KEY
+    optional_env_vars:
+      - WTS_BASE_URL
+    startup_timeout_seconds: 60
+    tool_timeout_seconds: 600
+    approval_mode: approve
+
+permissions:
+  approval_policy: auto
+
+budgets:
+  timeout_seconds: 7200
+  max_turns: null
+  max_cost_usd: null
+
+repair:
+  strategy: external-loop
+  max_attempts: 1
+
+skills:
+  selected: []
+
+subagents:
+  selected: []
+
+logging:
+  write_run_record: true
+  retain_event_log: true
+
+adapters:
+  claude:
+    strict_mcp_config: true
+    api_key_env: ANTHROPIC_API_KEY
+    base_url_env: ANTHROPIC_BASE_URL
+    disallowed_tools:
+      # never prompt the user or signal out of band
+      - AskUserQuestion
+      - PushNotification
+      # force literature retrieval through the scholar-gateway MCP, not built-in web tools
+      - WebFetch
+      - WebSearch
+      # no multi-agent orchestration or skill invocation
+      - Workflow
+      - Skill
+      # no scheduling, looping, or monitoring machinery
+      - CronCreate
+      - CronDelete
+      - CronList
+      - Monitor
+      - ScheduleWakeup
+      # no git worktrees or notebooks
+      - EnterWorktree
+      - ExitWorktree
+      - NotebookEdit

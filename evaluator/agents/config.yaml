@@ -1,0 +1,119 @@
+# =============================================================================
+# Models: Inline provider-specific config under provider-suffixed aliases
+# =============================================================================
+
+models:
+  claude-opus-4.6:
+    type: anthropic
+    model_id: "claude-opus-4-6"  # use type: bedrock + a Bedrock model id to run via AWS
+    api_key: "${ANTHROPIC_API_KEY}"
+    base_url: "${ANTHROPIC_BASE_URL}"
+    num_retries: 3
+    retry_multiplier: 2.0
+    retry_start_wait: 2.0
+
+  gpt-5.4:
+    type: openai
+    model_id: "gpt-5.4"
+    api_key: "${OPENAI_API_KEY}"
+    base_url: "${OPENAI_BASE_URL}"
+    num_retries: 5
+    retry_multiplier: 2.0
+    retry_start_wait: 2.0
+
+  gpt-5.5:
+    type: openai
+    model_id: "gpt-5.5"
+    api_key: "${OPENAI_API_KEY}"
+    base_url: "${OPENAI_BASE_URL}"
+    num_retries: 5
+    retry_multiplier: 2.0
+    retry_start_wait: 2.0
+
+  deepseek-v4-pro:
+    type: deepseek
+    model_id: "deepseek-v4-pro"
+    api_key: "${DEEPSEEK_API_KEY}"
+    base_url: "${DEEPSEEK_BASE_URL}"
+    num_retries: 5
+    retry_multiplier: 2.0
+    retry_start_wait: 2.0
+
+  deepseek-v4-flash:
+    type: deepseek
+    model_id: "deepseek-v4-flash"
+    api_key: "${DEEPSEEK_API_KEY}"
+    base_url: "${DEEPSEEK_BASE_URL}"
+    num_retries: 5
+    retry_multiplier: 2.0
+    retry_start_wait: 2.0
+
+  gemini-3.5-flash:
+    type: gemini
+    model_id: "gemini-3.5-flash"
+    api_key: "${GEMINI_API_KEY}"
+    base_url: "${GEMINI_BASE_URL}"
+    num_retries: 5
+    retry_multiplier: 2.0
+    retry_start_wait: 2.0
+
+
+# =============================================================================
+# Agents: Runtime parameters (defined once per agent, no duplication!)
+# =============================================================================
+
+agents:
+  paper_summarization_agent:
+    model: "deepseek-v4-flash"
+    max_tokens: 20000
+    max_context_tokens: 1_000_000
+    temperature: 1.0
+    enable_thinking: false
+    thinking_type: adaptive
+
+  context_compression:
+    model: "deepseek-v4-pro"
+    max_tokens: 20000
+    max_context_tokens: 1_000_000
+    temperature: 0.5
+    enable_thinking: true
+    thinking_type: adaptive
+    keep_recent_messages: 6
+
+  research_agent:
+    model: "gpt-5.4"
+    max_tokens: 20000
+    max_context_tokens: 400_000
+    temperature: 0.3  # effective only when thinking is disabled; with adaptive thinking, API enforces temperature=1.0
+    enable_thinking: true
+    thinking_type: adaptive
+    reasoning_effort: high
+
+  literature_review_agent:
+    model: "gpt-5.4"
+    max_tokens: 200000
+    max_context_tokens: 400_000
+    temperature: 0.3
+    enable_thinking: true
+    thinking_type: adaptive
+    reasoning_effort: high
+
+  judge_agent:
+    model: "claude-opus-4.6"
+    max_tokens: 20000
+    max_context_tokens: 400_000
+    temperature: 0.2  # effective only when thinking is disabled; with adaptive thinking, API enforces temperature=1.0
+    enable_thinking: true
+    thinking_type: adaptive
+    reasoning_effort: xhigh
+
+
+# =============================================================================
+# Token Counting
+# =============================================================================
+
+openai_token_count:
+  model: "gpt-5.4"
+  encoding_name: "o200k_base"
+  method: "tiktoken"
+  max_tokens: 128000

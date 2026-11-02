@@ -1,0 +1,3 @@
+# This asset version intentionally ships no skills. The framework requires the
+# skills/ directory to exist even when skills.selected is empty; this file keeps
+# the otherwise-empty directory under version control.

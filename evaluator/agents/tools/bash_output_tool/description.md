@@ -1,0 +1,9 @@
+- Retrieves output from a running or completed background bash shell
+- Prefer this tool only after `Bash` explicitly reported that the command is still running; do not re-check commands that already completed with no output
+- Takes a shell_id parameter identifying the shell
+- Always returns only new output since the last check
+- Returns stdout and stderr output along with shell status
+- Supports optional regex filtering to show only lines matching a pattern
+- Supports optional wait parameter to wait X seconds before checking output
+- Use this tool when you need to monitor or check the output of a long-running shell
+- Always recommend to add wait X seconds (wait=X) to wait for the output to be generated. If your command is running for a long time, you can add a larger wait time, e.g. wait=300 (5 minutes).

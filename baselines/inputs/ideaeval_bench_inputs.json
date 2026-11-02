@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "n_inputs": 91,
+    "description": "Inputs for the IdeaEval ideation benchmark: one entry per cohort. `date` is the cutoff (the day before the earliest paper in the cohort); `topic` is a 30-50 word description of the cohort's research direction. `id` matches the cohort_id in the IdeaEval-Bench dataset."
+  },
+  "inputs": [
+    {
+      "id": "l1_001_02_03_w2",
+      "topic": "Large language models acquire safety alignment through post-training procedures such as RLHF, yet this alignment is fragile: it can erode under benign downstream fine-tuning, unlearning, and continual learning on new tasks, and can be deliberately broken by adversarial fine-tuning, data poisoning, and jailbreak attacks.",
+      "date": "2025-11-11"
+    },
+    {
+      "id": "l1_001_02_06_w1",
+      "topic": "AI safety for large language and multimodal models spans technical defenses such as jailbreak detection, guardrails, red-teaming, and behavioral probing, alongside sociotechnical concerns including governance, regulatory compliance, and trustworthiness, with persistent challenges around adversarial robustness, evaluation reliability across deployment settings, and alignment with evolving legal and ethical norms.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_001_02_06_w2",
+      "topic": "AI safety for large language and multimodal models spans technical defenses such as jailbreak detection, guardrails, red-teaming, and behavioral probing, alongside sociotechnical concerns including governance, regulatory compliance, and trustworthiness, with persistent challenges around adversarial robustness, evaluation reliability across deployment settings, and alignment with evolving legal and ethical norms.",
+      "date": "2025-10-01"
+    },
+    {
+      "id": "l1_001_06_01_w1",
+      "topic": "Mechanistic interpretability of large transformer-based models — including language, vision-language, and multimodal systems — examines how internal components such as neurons, attention heads, MLP modules, layers, and circuits implement specific behaviors and capabilities, typically through probing, ablation, activation patching, and representation analysis on a per-model, per-task basis.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_001_06_01_w2",
+      "topic": "Mechanistic interpretability of large transformer-based models — including language, vision-language, and multimodal systems — examines how internal components such as neurons, attention heads, MLP modules, layers, and circuits implement specific behaviors and capabilities, typically through probing, ablation, activation patching, and representation analysis on a per-model, per-task basis.",
+      "date": "2025-10-02"
+    },
+    {
+      "id": "l1_001_06_01_w3",
+      "topic": "Mechanistic interpretability of large transformer-based models — including language, vision-language, and multimodal systems — examines how internal components such as neurons, attention heads, MLP modules, layers, and circuits implement specific behaviors and capabilities, typically through probing, ablation, activation patching, and representation analysis on a per-model, per-task basis.",
+      "date": "2025-12-21"
+    },
+    {
+      "id": "l1_002_01_06_w1",
+      "topic": "Chain-of-thought reasoning has become a central paradigm for improving large language model performance on complex tasks, but autoregressive token-by-token generation over discrete vocabulary is computationally costly, scales poorly as reasoning chains grow long, and offers limited mechanisms for adapting per-token compute or revising earlier steps.",
+      "date": "2025-09-14"
+    },
+    {
+      "id": "l1_002_02_01_w1",
+      "topic": "Reinforcement learning and process supervision are widely used to improve chain-of-thought reasoning in large language models, but reliance on sparse outcome-level rewards over long generations leaves token- and step-level supervision ill-posed and exposes models to reward hacking, unfaithful intermediate reasoning, and trajectory drift despite correct final answers.",
+      "date": "2025-09-18"
+    },
+    {
+      "id": "l1_002_02_02_w1",
+      "topic": "Reinforcement learning has become a standard post-training stage for improving reasoning and other generation capabilities in large language models, but practical training is hampered by entropy collapse, premature convergence, sparse reward signals, and loss of output diversity, especially over long trajectories with vast token-level action spaces.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_002_02_03_w1",
+      "topic": "Reinforcement learning is widely used to post-train large language models for reasoning and agentic tasks, yet practical training is hampered by policy-gradient instability, entropy collapse, high gradient variance, sparse rewards, sample inefficiency, off-policy staleness, and infrastructure overhead, particularly under long multi-turn rollouts and non-autoregressive architectures.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_002_02_03_w2",
+      "topic": "Reinforcement learning is widely used to post-train large language models for reasoning and agentic tasks, yet practical training is hampered by policy-gradient instability, entropy collapse, high gradient variance, sparse rewards, sample inefficiency, off-policy staleness, and infrastructure overhead, particularly under long multi-turn rollouts and non-autoregressive architectures.",
+      "date": "2025-10-04"
+    },
+    {
+      "id": "l1_002_02_03_w3",
+      "topic": "Reinforcement learning is widely used to post-train large language models for reasoning and agentic tasks, yet practical training is hampered by policy-gradient instability, entropy collapse, high gradient variance, sparse rewards, sample inefficiency, off-policy staleness, and infrastructure overhead, particularly under long multi-turn rollouts and non-autoregressive architectures.",
+      "date": "2025-11-23"
+    },
+    {
+      "id": "l1_002_02_04_w1",
+      "topic": "Reinforcement learning, particularly with verifiable rewards, has become a standard post-training stage for improving reasoning in large language models, but it remains constrained by reliance on human-curated prompts and labels, inefficient exploration when prompt difficulty mismatches current model capability, and limited scalability beyond fixed problem sets toward harder or longer-horizon tasks.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_002_02_04_w2",
+      "topic": "Reinforcement learning, particularly with verifiable rewards, has become a standard post-training stage for improving reasoning in large language models, but it remains constrained by reliance on human-curated prompts and labels, inefficient exploration when prompt difficulty mismatches current model capability, and limited scalability beyond fixed problem sets toward harder or longer-horizon tasks.",
+      "date": "2025-10-01"
+    },
+    {
+      "id": "l1_002_02_05_w1",
+      "topic": "Reinforcement learning is increasingly used as a post-training stage to teach large language model agents to use external tools and act in interactive multi-turn environments, but practical training is hindered by sparse outcome rewards, credit assignment over long horizons, limited environment diversity, context-length bottlenecks, and unstable optimization at scale.",
+      "date": "2025-09-02"
+    },
+    {
+      "id": "l1_002_02_05_w2",
+      "topic": "Reinforcement learning is increasingly used as a post-training stage to teach large language model agents to use external tools and act in interactive multi-turn environments, but practical training is hindered by sparse outcome rewards, credit assignment over long horizons, limited environment diversity, context-length bottlenecks, and unstable optimization at scale.",
+      "date": "2025-10-05"
+    },
+    {
+      "id": "l1_002_02_05_w3",
+      "topic": "Reinforcement learning is increasingly used as a post-training stage to teach large language model agents to use external tools and act in interactive multi-turn environments, but practical training is hindered by sparse outcome rewards, credit assignment over long horizons, limited environment diversity, context-length bottlenecks, and unstable optimization at scale.",
+      "date": "2025-11-07"
+    },
+    {
+      "id": "l1_002_03_02_w1",
+      "topic": "Augmenting large language models with external tools, APIs, and functions has become a standard route to grounded reasoning and agentic task execution, but reliable tool selection from large inventories, well-formed argument generation, multi-turn error recovery, and stable training of tool-use policies via reinforcement learning or supervised fine-tuning remain difficult.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_002_03_02_w2",
+      "topic": "Augmenting large language models with external tools, APIs, and functions has become a standard route to grounded reasoning and agentic task execution, but reliable tool selection from large inventories, well-formed argument generation, multi-turn error recovery, and stable training of tool-use policies via reinforcement learning or supervised fine-tuning remain difficult.",
+      "date": "2025-10-07"
+    },
+    {
+      "id": "l1_002_03_03_w1",
+      "topic": "Autonomous agents built on vision-language and large language models increasingly act inside graphical user interfaces and web browsers to complete multi-step digital tasks, facing persistent challenges around screenshot-based UI element grounding, long-horizon trajectory planning, scarce interaction training data, evaluation without ground-truth states, and inference cost on high-resolution observations.",
+      "date": "2025-09-09"
+    },
+    {
+      "id": "l1_002_04_01_w1",
+      "topic": "Large language model agents operating over long-horizon, multi-session interactions must manage external memory because context windows are finite while interaction histories grow unbounded, and standard retrieval-augmented or summarization-based approaches struggle with context bloat, retrieval granularity mismatches, temporal inconsistency, and degraded reasoning when supporting personalization across sessions.",
+      "date": "2025-09-03"
+    },
+    {
+      "id": "l1_002_04_01_w3",
+      "topic": "Large language model agents operating over long-horizon, multi-session interactions must manage external memory because context windows are finite while interaction histories grow unbounded, and standard retrieval-augmented or summarization-based approaches struggle with context bloat, retrieval granularity mismatches, temporal inconsistency, and degraded reasoning when supporting personalization across sessions.",
+      "date": "2025-12-13"
+    },
+    {
+      "id": "l1_002_04_01_w4",
+      "topic": "Large language model agents operating over long-horizon, multi-session interactions must manage external memory because context windows are finite while interaction histories grow unbounded, and standard retrieval-augmented or summarization-based approaches struggle with context bloat, retrieval granularity mismatches, temporal inconsistency, and degraded reasoning when supporting personalization across sessions.",
+      "date": "2026-01-12"
+    },
+    {
+      "id": "l1_002_04_02_w2",
+      "topic": "Large language model agents are increasingly used to tackle complex multi-step tasks that require decomposing a high-level goal into sub-tasks, invoking tools, and executing plans across web, embodied, structured-data, and domain-specific environments, yet they remain limited by long-horizon planning brittleness, sequential reasoning bottlenecks, and adaptation to dynamic conditions and resource constraints.",
+      "date": "2025-10-08"
+    },
+    {
+      "id": "l1_002_04_03_w1",
+      "topic": "Large language model agents are increasingly post-trained for long-horizon multi-turn tasks across web navigation, GUI control, software engineering, embodied control, and data analysis, but training via reinforcement learning, imitation learning, or supervised fine-tuning is hampered by sparse outcome rewards, difficult credit assignment, costly environment rollouts, and scarce high-quality interaction trajectories.",
+      "date": "2025-09-02"
+    },
+    {
+      "id": "l1_002_04_03_w2",
+      "topic": "Large language model agents are increasingly post-trained for long-horizon multi-turn tasks across web navigation, GUI control, software engineering, embodied control, and data analysis, but training via reinforcement learning, imitation learning, or supervised fine-tuning is hampered by sparse outcome rewards, difficult credit assignment, costly environment rollouts, and scarce high-quality interaction trajectories.",
+      "date": "2025-10-05"
+    },
+    {
+      "id": "l1_002_05_w1",
+      "topic": "Vision-language models extend chain-of-thought reasoning to images, diagrams, and video, but commonly suffer from weak visual grounding, fragile spatial and temporal understanding, and reasoning chains that drift away from visual evidence, particularly on long videos, 3D scenes, and diagram-heavy domains such as geometry and physics.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_002_05_w2",
+      "topic": "Vision-language models extend chain-of-thought reasoning to images, diagrams, and video, but commonly suffer from weak visual grounding, fragile spatial and temporal understanding, and reasoning chains that drift away from visual evidence, particularly on long videos, 3D scenes, and diagram-heavy domains such as geometry and physics.",
+      "date": "2025-10-06"
+    },
+    {
+      "id": "l1_002_05_w3",
+      "topic": "Vision-language models extend chain-of-thought reasoning to images, diagrams, and video, but commonly suffer from weak visual grounding, fragile spatial and temporal understanding, and reasoning chains that drift away from visual evidence, particularly on long videos, 3D scenes, and diagram-heavy domains such as geometry and physics.",
+      "date": "2025-11-11"
+    },
+    {
+      "id": "l1_002_06_02_w1",
+      "topic": "Chain-of-thought and multi-step reasoning have become standard for large language models across mathematical, logical, multi-hop, and multimodal question answering, yet reasoning quality remains brittle: outputs are sensitive to prompt phrasing, auxiliary or distracting context, chain length, available test-time compute, and the properties of post-training data.",
+      "date": "2025-09-07"
+    },
+    {
+      "id": "l1_002_07_w1",
+      "topic": "Large language models are increasingly deployed as multiple interacting agents that debate, route, orchestrate, and collaborate on reasoning and tool-use tasks, yet such systems face persistent issues with token-costly natural-language messaging, rigid hand-crafted topologies and role assignments, conformity-driven error propagation, and brittle coordination as agent populations grow.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_002_07_w2",
+      "topic": "Large language models are increasingly deployed as multiple interacting agents that debate, route, orchestrate, and collaborate on reasoning and tool-use tasks, yet such systems face persistent issues with token-costly natural-language messaging, rigid hand-crafted topologies and role assignments, conformity-driven error propagation, and brittle coordination as agent populations grow.",
+      "date": "2025-10-01"
+    },
+    {
+      "id": "l1_002_07_w3",
+      "topic": "Large language models are increasingly deployed as multiple interacting agents that debate, route, orchestrate, and collaborate on reasoning and tool-use tasks, yet such systems face persistent issues with token-costly natural-language messaging, rigid hand-crafted topologies and role assignments, conformity-driven error propagation, and brittle coordination as agent populations grow.",
+      "date": "2025-11-02"
+    },
+    {
+      "id": "l1_005_02_w1",
+      "topic": "Large vision-language and multimodal models that jointly perform visual understanding and generation over images, long videos, and high-resolution inputs face heavy training and inference costs, driven by very large visual token sequences, quadratic attention over multimodal contexts, expensive pretraining and fine-tuning, and tight resource budgets on edge and mobile deployments.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_005_02_w2",
+      "topic": "Large vision-language and multimodal models that jointly perform visual understanding and generation over images, long videos, and high-resolution inputs face heavy training and inference costs, driven by very large visual token sequences, quadratic attention over multimodal contexts, expensive pretraining and fine-tuning, and tight resource budgets on edge and mobile deployments.",
+      "date": "2025-10-02"
+    },
+    {
+      "id": "l1_005_02_w3",
+      "topic": "Large vision-language and multimodal models that jointly perform visual understanding and generation over images, long videos, and high-resolution inputs face heavy training and inference costs, driven by very large visual token sequences, quadratic attention over multimodal contexts, expensive pretraining and fine-tuning, and tight resource budgets on edge and mobile deployments.",
+      "date": "2025-11-17"
+    },
+    {
+      "id": "l1_005_04_w1",
+      "topic": "Vision-language models are increasingly applied to long-form and streaming video for tasks such as video question answering, temporal grounding, and action recognition, but uniform frame sampling, limited token budgets, and quadratic attention costs make fine-grained temporal reasoning over hour-long content computationally expensive and often unreliable.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_005_04_w2",
+      "topic": "Vision-language models are increasingly applied to long-form and streaming video for tasks such as video question answering, temporal grounding, and action recognition, but uniform frame sampling, limited token budgets, and quadratic attention costs make fine-grained temporal reasoning over hour-long content computationally expensive and often unreliable.",
+      "date": "2025-10-06"
+    },
+    {
+      "id": "l1_005_04_w3",
+      "topic": "Vision-language models are increasingly applied to long-form and streaming video for tasks such as video question answering, temporal grounding, and action recognition, but uniform frame sampling, limited token budgets, and quadratic attention costs make fine-grained temporal reasoning over hour-long content computationally expensive and often unreliable.",
+      "date": "2025-11-06"
+    },
+    {
+      "id": "l1_005_04_w4",
+      "topic": "Vision-language models are increasingly applied to long-form and streaming video for tasks such as video question answering, temporal grounding, and action recognition, but uniform frame sampling, limited token budgets, and quadratic attention costs make fine-grained temporal reasoning over hour-long content computationally expensive and often unreliable.",
+      "date": "2025-12-08"
+    },
+    {
+      "id": "l1_005_07_w1",
+      "topic": "Vision-language-action models extend pretrained vision-language backbones to output actions for embodied agents in manipulation, navigation, driving, and interface control, but typically struggle with precise 3D spatial grounding, partial observability across long action horizons, distribution shift in unseen environments, and efficient deployment under real-time latency constraints.",
+      "date": "2025-09-29"
+    },
+    {
+      "id": "l1_005_07_w2",
+      "topic": "Vision-language-action models extend pretrained vision-language backbones to output actions for embodied agents in manipulation, navigation, driving, and interface control, but typically struggle with precise 3D spatial grounding, partial observability across long action horizons, distribution shift in unseen environments, and efficient deployment under real-time latency constraints.",
+      "date": "2025-10-28"
+    },
+    {
+      "id": "l1_005_07_w3",
+      "topic": "Vision-language-action models extend pretrained vision-language backbones to output actions for embodied agents in manipulation, navigation, driving, and interface control, but typically struggle with precise 3D spatial grounding, partial observability across long action horizons, distribution shift in unseen environments, and efficient deployment under real-time latency constraints.",
+      "date": "2025-11-29"
+    },
+    {
+      "id": "l1_006_02_w1",
+      "topic": "Text- and instruction-guided editing of images and videos with pretrained generative models spans tasks such as local attribute changes, object insertion or removal, inpainting, and style transfer, and must contend with preserving unedited content, faithful instruction following, fine-grained control beyond what natural language conveys, and consistency across frames and viewpoints.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_006_02_w2",
+      "topic": "Text- and instruction-guided editing of images and videos with pretrained generative models spans tasks such as local attribute changes, object insertion or removal, inpainting, and style transfer, and must contend with preserving unedited content, faithful instruction following, fine-grained control beyond what natural language conveys, and consistency across frames and viewpoints.",
+      "date": "2025-10-04"
+    },
+    {
+      "id": "l1_006_02_w3",
+      "topic": "Text- and instruction-guided editing of images and videos with pretrained generative models spans tasks such as local attribute changes, object insertion or removal, inpainting, and style transfer, and must contend with preserving unedited content, faithful instruction following, fine-grained control beyond what natural language conveys, and consistency across frames and viewpoints.",
+      "date": "2025-11-10"
+    },
+    {
+      "id": "l1_006_02_w4",
+      "topic": "Text- and instruction-guided editing of images and videos with pretrained generative models spans tasks such as local attribute changes, object insertion or removal, inpainting, and style transfer, and must contend with preserving unedited content, faithful instruction following, fine-grained control beyond what natural language conveys, and consistency across frames and viewpoints.",
+      "date": "2025-12-03"
+    },
+    {
+      "id": "l1_006_03_03_w1",
+      "topic": "Autoregressive and diffusion-based video generation models extend naturally trained short clips to long-horizon synthesis, but rolling out beyond training length suffers from well-known pain points such as error accumulation, exposure bias, motion drift, content forgetting, and ballooning KV-cache memory, which jointly erode temporal consistency over extended durations.",
+      "date": "2025-11-24"
+    },
+    {
+      "id": "l1_006_05_w1",
+      "topic": "Modern visual generative models for image and video synthesis — including diffusion, flow-matching, and token-based autoregressive paradigms — rely on iterative or sequential sampling over long visual token sequences with large parameter counts, making inference latency, memory footprint, and on-device or real-time deployment persistent obstacles despite extensive distillation and architectural engineering.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_006_05_w2",
+      "topic": "Modern visual generative models for image and video synthesis — including diffusion, flow-matching, and token-based autoregressive paradigms — rely on iterative or sequential sampling over long visual token sequences with large parameter counts, making inference latency, memory footprint, and on-device or real-time deployment persistent obstacles despite extensive distillation and architectural engineering.",
+      "date": "2025-10-01"
+    },
+    {
+      "id": "l1_006_05_w3",
+      "topic": "Modern visual generative models for image and video synthesis — including diffusion, flow-matching, and token-based autoregressive paradigms — rely on iterative or sequential sampling over long visual token sequences with large parameter counts, making inference latency, memory footprint, and on-device or real-time deployment persistent obstacles despite extensive distillation and architectural engineering.",
+      "date": "2025-11-09"
+    },
+    {
+      "id": "l1_007_05_w1",
+      "topic": "Generative models for 3D content synthesis from conditioning signals such as text, single images, sketches, or sparse observations span a range of outputs — individual objects, articulated parts, CAD models, indoor and tabletop layouts, and large-scale outdoor or urban scenes — under constraints on geometric consistency, photorealistic appearance, and physical plausibility.",
+      "date": "2025-09-03"
+    },
+    {
+      "id": "l1_007_05_w2",
+      "topic": "Generative models for 3D content synthesis from conditioning signals such as text, single images, sketches, or sparse observations span a range of outputs — individual objects, articulated parts, CAD models, indoor and tabletop layouts, and large-scale outdoor or urban scenes — under constraints on geometric consistency, photorealistic appearance, and physical plausibility.",
+      "date": "2025-10-10"
+    },
+    {
+      "id": "l1_007_05_w3",
+      "topic": "Generative models for 3D content synthesis from conditioning signals such as text, single images, sketches, or sparse observations span a range of outputs — individual objects, articulated parts, CAD models, indoor and tabletop layouts, and large-scale outdoor or urban scenes — under constraints on geometric consistency, photorealistic appearance, and physical plausibility.",
+      "date": "2025-11-05"
+    },
+    {
+      "id": "l1_009_01_w1",
+      "topic": "Low-precision quantization of weights and activations is a standard route to compress and accelerate large neural networks for memory- and compute-constrained deployment, but post-training and quantization-aware training methods still suffer accuracy degradation at low bit-widths, with activation outliers, mixed-precision bit allocation, and hardware-friendly numeric formats remaining persistent pain points.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_009_01_w2",
+      "topic": "Low-precision quantization of weights and activations is a standard route to compress and accelerate large neural networks for memory- and compute-constrained deployment, but post-training and quantization-aware training methods still suffer accuracy degradation at low bit-widths, with activation outliers, mixed-precision bit allocation, and hardware-friendly numeric formats remaining persistent pain points.",
+      "date": "2025-10-15"
+    },
+    {
+      "id": "l1_009_01_w3",
+      "topic": "Low-precision quantization of weights and activations is a standard route to compress and accelerate large neural networks for memory- and compute-constrained deployment, but post-training and quantization-aware training methods still suffer accuracy degradation at low bit-widths, with activation outliers, mixed-precision bit allocation, and hardware-friendly numeric formats remaining persistent pain points.",
+      "date": "2025-11-08"
+    },
+    {
+      "id": "l1_009_03_w1",
+      "topic": "Knowledge distillation transfers capabilities from large teacher models to compact students across language, vision, multimodal, and generative settings under deployment constraints such as latency, memory, and edge hardware, but suffers from teacher-student capacity gaps, noisy or overly long supervision signals, conflicting objectives, and architectural mismatches between teacher and student.",
+      "date": "2025-09-05"
+    },
+    {
+      "id": "l1_009_03_w2",
+      "topic": "Knowledge distillation transfers capabilities from large teacher models to compact students across language, vision, multimodal, and generative settings under deployment constraints such as latency, memory, and edge hardware, but suffers from teacher-student capacity gaps, noisy or overly long supervision signals, conflicting objectives, and architectural mismatches between teacher and student.",
+      "date": "2025-10-06"
+    },
+    {
+      "id": "l1_009_03_w3",
+      "topic": "Knowledge distillation transfers capabilities from large teacher models to compact students across language, vision, multimodal, and generative settings under deployment constraints such as latency, memory, and edge hardware, but suffers from teacher-student capacity gaps, noisy or overly long supervision signals, conflicting objectives, and architectural mismatches between teacher and student.",
+      "date": "2025-12-22"
+    },
+    {
+      "id": "l1_009_05_w1",
+      "topic": "Training large neural networks at scale relies on stochastic optimizers and distributed systems whose efficiency is constrained by memory and compute cost, inter-device communication overhead, uneven hardware utilization across heterogeneous accelerators, numerical precision trade-offs in mixed-precision arithmetic, and brittle hyperparameter scaling, with these pressures intensifying for language-model pretraining, fine-tuning, and reinforcement-learning post-training.",
+      "date": "2025-09-11"
+    },
+    {
+      "id": "l1_009_05_w2",
+      "topic": "Training large neural networks at scale relies on stochastic optimizers and distributed systems whose efficiency is constrained by memory and compute cost, inter-device communication overhead, uneven hardware utilization across heterogeneous accelerators, numerical precision trade-offs in mixed-precision arithmetic, and brittle hyperparameter scaling, with these pressures intensifying for language-model pretraining, fine-tuning, and reinforcement-learning post-training.",
+      "date": "2025-10-12"
+    },
+    {
+      "id": "l1_009_06_02_w1",
+      "topic": "Autoregressive language model decoding generates one token per forward pass, bottlenecking inference latency; parallel and non-autoregressive alternatives, including discrete diffusion language models and speculative decoding, aim to produce multiple tokens per step but historically struggle to match autoregressive sample quality and integrate cleanly with standard inference infrastructure.",
+      "date": "2025-09-05"
+    },
+    {
+      "id": "l1_009_06_03_w1",
+      "topic": "During transformer-based language model inference, the key-value cache grows with context length and becomes a dominant GPU memory and bandwidth bottleneck, particularly under long contexts, extended reasoning traces, multi-turn dialogue, and multimodal inputs, while production serving systems further constrain memory layouts, batching, and cache reuse across requests.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_009_06_03_w2",
+      "topic": "During transformer-based language model inference, the key-value cache grows with context length and becomes a dominant GPU memory and bandwidth bottleneck, particularly under long contexts, extended reasoning traces, multi-turn dialogue, and multimodal inputs, while production serving systems further constrain memory layouts, batching, and cache reuse across requests.",
+      "date": "2025-10-05"
+    },
+    {
+      "id": "l1_009_06_05_w1",
+      "topic": "Softmax attention scales quadratically with sequence length and grows a KV cache linearly during autoregressive decoding, making long-context training, inference, and long-form video modeling expensive; sub-quadratic substitutes such as linear, sparse, and low-rank attention typically erode recall, approximation fidelity, or downstream quality relative to dense softmax baselines.",
+      "date": "2025-09-20"
+    },
+    {
+      "id": "l1_010_04_w1",
+      "topic": "Offline reinforcement learning trains sequential decision-making policies from static logged datasets without further environment interaction, but practical methods are constrained by distributional shift, value overestimation on out-of-distribution actions, compounding errors over long horizons, sparse rewards, and the limited quality of available demonstration or behavior-policy data.",
+      "date": "2025-09-11"
+    },
+    {
+      "id": "l1_010_08_w1",
+      "topic": "Reinforcement learning has emerged as a post-training stage for aligning pretrained generative models—diffusion, flow matching, masked, and autoregressive—across image, video, 3D, and CAD outputs, yet adapting it to iterative multi-step samplers raises persistent issues around reward design, credit assignment, sample efficiency, training stability, and reward hacking.",
+      "date": "2025-11-20"
+    },
+    {
+      "id": "l1_011_01_w1",
+      "topic": "3D scene perception spans tasks such as 3D object detection, multi-object tracking, semantic and instance segmentation, occupancy prediction, and online map construction from camera, LiDAR, and radar inputs. These systems are deployed across autonomous driving, robotics and UAVs, multi-camera surveillance, and infrastructure-mounted sensing under heterogeneous-sensor, annotation-cost, communication-bandwidth, and real-time-compute constraints.",
+      "date": "2025-09-03"
+    },
+    {
+      "id": "l1_011_01_w2",
+      "topic": "3D scene perception spans tasks such as 3D object detection, multi-object tracking, semantic and instance segmentation, occupancy prediction, and online map construction from camera, LiDAR, and radar inputs. These systems are deployed across autonomous driving, robotics and UAVs, multi-camera surveillance, and infrastructure-mounted sensing under heterogeneous-sensor, annotation-cost, communication-bandwidth, and real-time-compute constraints.",
+      "date": "2025-10-06"
+    },
+    {
+      "id": "l1_011_01_w3",
+      "topic": "3D scene perception spans tasks such as 3D object detection, multi-object tracking, semantic and instance segmentation, occupancy prediction, and online map construction from camera, LiDAR, and radar inputs. These systems are deployed across autonomous driving, robotics and UAVs, multi-camera surveillance, and infrastructure-mounted sensing under heterogeneous-sensor, annotation-cost, communication-bandwidth, and real-time-compute constraints.",
+      "date": "2025-11-07"
+    },
+    {
+      "id": "l1_011_01_w4",
+      "topic": "3D scene perception spans tasks such as 3D object detection, multi-object tracking, semantic and instance segmentation, occupancy prediction, and online map construction from camera, LiDAR, and radar inputs. These systems are deployed across autonomous driving, robotics and UAVs, multi-camera surveillance, and infrastructure-mounted sensing under heterogeneous-sensor, annotation-cost, communication-bandwidth, and real-time-compute constraints.",
+      "date": "2025-12-10"
+    },
+    {
+      "id": "l1_011_05_w1",
+      "topic": "Embodied systems for robotics, manipulation, and autonomous driving depend on synthetic data, simulators, generative world models, real-sensor perception, and 3D scene representations of real environments, all of which must contend with the sim-to-real gap, scarce diverse interaction data, sensor noise and calibration errors, physical plausibility, controllability, multi-sensor consistency, and long-horizon spatial-temporal coherence.",
+      "date": "2025-09-24"
+    },
+    {
+      "id": "l1_011_05_w2",
+      "topic": "Embodied systems for robotics, manipulation, and autonomous driving depend on synthetic data, simulators, generative world models, real-sensor perception, and 3D scene representations of real environments, all of which must contend with the sim-to-real gap, scarce diverse interaction data, sensor noise and calibration errors, physical plausibility, controllability, multi-sensor consistency, and long-horizon spatial-temporal coherence.",
+      "date": "2025-11-24"
+    },
+    {
+      "id": "l1_015_05_w1",
+      "topic": "Large language model agents are increasingly applied to scientific workflows spanning equation and algorithm discovery, simulation setup, literature review, hypothesis generation, theorem proving, and laboratory protocol execution, where specialist expertise, fragmented domain tools and data, and long multi-step pipelines have historically constrained automation across physics, chemistry, materials, biology, and mathematics.",
+      "date": "2025-09-02"
+    },
+    {
+      "id": "l1_015_05_w2",
+      "topic": "Large language model agents are increasingly applied to scientific workflows spanning equation and algorithm discovery, simulation setup, literature review, hypothesis generation, theorem proving, and laboratory protocol execution, where specialist expertise, fragmented domain tools and data, and long multi-step pipelines have historically constrained automation across physics, chemistry, materials, biology, and mathematics.",
+      "date": "2025-10-13"
+    },
+    {
+      "id": "l1_017_01_w1",
+      "topic": "Image and video restoration and enhancement covers tasks such as super-resolution, denoising, dehazing, deraining, deblurring, and low-light enhancement across natural, medical, infrared, and underwater imagery, where models must contend with unknown real-world degradations, scarce paired training data, computational budgets, and the fidelity-versus-perceptual-quality trade-off.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_017_01_w2",
+      "topic": "Image and video restoration and enhancement covers tasks such as super-resolution, denoising, dehazing, deraining, deblurring, and low-light enhancement across natural, medical, infrared, and underwater imagery, where models must contend with unknown real-world degradations, scarce paired training data, computational budgets, and the fidelity-versus-perceptual-quality trade-off.",
+      "date": "2025-10-02"
+    },
+    {
+      "id": "l1_017_01_w3",
+      "topic": "Image and video restoration and enhancement covers tasks such as super-resolution, denoising, dehazing, deraining, deblurring, and low-light enhancement across natural, medical, infrared, and underwater imagery, where models must contend with unknown real-world degradations, scarce paired training data, computational budgets, and the fidelity-versus-perceptual-quality trade-off.",
+      "date": "2025-11-02"
+    },
+    {
+      "id": "l1_017_01_w4",
+      "topic": "Image and video restoration and enhancement covers tasks such as super-resolution, denoising, dehazing, deraining, deblurring, and low-light enhancement across natural, medical, infrared, and underwater imagery, where models must contend with unknown real-world degradations, scarce paired training data, computational budgets, and the fidelity-versus-perceptual-quality trade-off.",
+      "date": "2025-12-06"
+    },
+    {
+      "id": "l1_017_01_w5",
+      "topic": "Image and video restoration and enhancement covers tasks such as super-resolution, denoising, dehazing, deraining, deblurring, and low-light enhancement across natural, medical, infrared, and underwater imagery, where models must contend with unknown real-world degradations, scarce paired training data, computational budgets, and the fidelity-versus-perceptual-quality trade-off.",
+      "date": "2026-01-05"
+    },
+    {
+      "id": "l1_017_02_w1",
+      "topic": "Visual perception of objects and people — spanning detection, localization, tracking, and cross-modal re-identification — operates across diverse imaging conditions including aerial and satellite views, infrared and multispectral sensing, and underwater or low-light scenes, under real-time inference, limited annotations, cross-domain shifts, and edge-hardware deployment constraints.</new_topic>\n</invoke>",
+      "date": "2025-09-02"
+    },
+    {
+      "id": "l1_017_02_w2",
+      "topic": "Visual perception of objects and people — spanning detection, localization, tracking, and cross-modal re-identification — operates across diverse imaging conditions including aerial and satellite views, infrared and multispectral sensing, and underwater or low-light scenes, under real-time inference, limited annotations, cross-domain shifts, and edge-hardware deployment constraints.</new_topic>\n</invoke>",
+      "date": "2025-10-06"
+    },
+    {
+      "id": "l1_017_02_w4",
+      "topic": "Visual perception of objects and people — spanning detection, localization, tracking, and cross-modal re-identification — operates across diverse imaging conditions including aerial and satellite views, infrared and multispectral sensing, and underwater or low-light scenes, under real-time inference, limited annotations, cross-domain shifts, and edge-hardware deployment constraints.</new_topic>\n</invoke>",
+      "date": "2025-12-18"
+    },
+    {
+      "id": "l1_017_04_w1",
+      "topic": "Computer vision for analyzing humans and animals from visual and sensor data covers pose and mesh estimation, action and activity recognition, person re-identification, gait, facial expression and behavior analysis, and human-object interaction, often constrained by limited labeled data, cross-domain or cross-modality gaps, occlusion, and resource-constrained or real-time deployment.",
+      "date": "2025-08-31"
+    },
+    {
+      "id": "l1_017_04_w2",
+      "topic": "Computer vision for analyzing humans and animals from visual and sensor data covers pose and mesh estimation, action and activity recognition, person re-identification, gait, facial expression and behavior analysis, and human-object interaction, often constrained by limited labeled data, cross-domain or cross-modality gaps, occlusion, and resource-constrained or real-time deployment.",
+      "date": "2025-10-01"
+    },
+    {
+      "id": "l1_017_04_w3",
+      "topic": "Computer vision for analyzing humans and animals from visual and sensor data covers pose and mesh estimation, action and activity recognition, person re-identification, gait, facial expression and behavior analysis, and human-object interaction, often constrained by limited labeled data, cross-domain or cross-modality gaps, occlusion, and resource-constrained or real-time deployment.",
+      "date": "2025-11-01"
+    },
+    {
+      "id": "l1_017_07_w1",
+      "topic": "Pretrained vision and vision-language models such as CLIP are routinely transferred to downstream recognition tasks under tight constraints — few-shot or unlabeled target data, distribution shifts at test time, source-free or open-vocabulary settings, novel-class discovery, and deployment across domains spanning medical, remote sensing, and 3D modalities.",
+      "date": "2025-09-03"
+    },
+    {
+      "id": "l1_017_07_w2",
+      "topic": "Pretrained vision and vision-language models such as CLIP are routinely transferred to downstream recognition tasks under tight constraints — few-shot or unlabeled target data, distribution shifts at test time, source-free or open-vocabulary settings, novel-class discovery, and deployment across domains spanning medical, remote sensing, and 3D modalities.",
+      "date": "2025-10-05"
+    },
+    {
+      "id": "l1_018_w1",
+      "topic": "Speech, audio, and audio-visual AI spans tasks such as speech recognition, synthesis, translation, audio captioning, sound separation, spoken dialogue, and audio-visual generation and understanding, increasingly built on multimodal foundation models that must handle many languages, low-resource and noisy conditions, streaming low-latency interaction, on-device deployment, and tight cross-modal alignment.",
+      "date": "2025-09-01"
+    },
+    {
+      "id": "l1_018_w3",
+      "topic": "Speech, audio, and audio-visual AI spans tasks such as speech recognition, synthesis, translation, audio captioning, sound separation, spoken dialogue, and audio-visual generation and understanding, increasingly built on multimodal foundation models that must handle many languages, low-resource and noisy conditions, streaming low-latency interaction, on-device deployment, and tight cross-modal alignment.",
+      "date": "2025-11-04"
+    }
+  ]
+}

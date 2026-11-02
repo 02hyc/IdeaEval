@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use IdeaEval, please cite it as below."
+title: "IdeaEval: Impact-Oriented Evaluation of Scientific Hypothesis Generation"
+authors:
+  - family-names: Huang
+    given-names: Yanchen
+  - family-names: Niu
+    given-names: Yuchen
+  - family-names: Hu
+    given-names: Xiangkun
+date-released: 2026-11-01
+url: "https://02hyc.github.io/Blog/posts/ideaeval/"
+repository-code: "https://github.com/02hyc/IdeaEval"
+license: Apache-2.0

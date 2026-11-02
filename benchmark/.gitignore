@@ -1,0 +1,39 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets and local config
+.env
+config.yaml
+agent_config.yaml
+
+# Cache and data
+cache/
+*.pdf
+.DS_Store
+datasets/
+data/
+experiments/
+
+# Topic browser packaged tarballs
+topic_browser*.tar.gz
+
+# Clustering results (data products)
+clustering_results*/
+
+# Logs
+*.log
+logs/
+
+# Test / sample run artifacts
+sample_*.jsonl
+sample_*.json
+*_results.jsonl
+*_results_review.json

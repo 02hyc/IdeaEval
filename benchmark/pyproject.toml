@@ -1,0 +1,39 @@
+[project]
+name = "ideaeval-benchmark"
+version = "0.1.0"
+description = "IdeaEval benchmark construction: arXiv corpus, TaxoAdapt clustering, cohorts, date-leak checks, paper-to-proposal"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.31",
+    "httpx>=0.27",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "openai>=1.30",
+    "anthropic>=0.25",
+    "numpy>=1.26",
+    "aiohttp>=3.9",
+    "tqdm>=4.66",
+    "sentence-transformers>=3.0",
+    "paper2proposal",
+]
+
+[project.scripts]
+ideaeval-benchmark = "ideaeval_benchmark.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ideaeval_benchmark"]
+
+[tool.uv.workspace]
+members = ["paper2proposal"]
+
+[tool.uv.sources]
+paper2proposal = { workspace = true }
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120

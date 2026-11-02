@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[oc]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and local config
+.env
+*.env.local
+
+# Data and run outputs (download data from Hugging Face; see README)
+data/
+experiments/
+workspace/
+.runs/
+runs/
+lit_cache/
+
+# Node (baselines/trace-viewer)
+node_modules/
+.next/
+.turbo/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

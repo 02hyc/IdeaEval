@@ -1,0 +1,82 @@
+version: 1
+harness: codex
+
+model: gpt-5.4
+effort: max
+
+workspace:
+  root: .runs
+  run_id: null
+  agent_dir: agent_workspace
+  clean_existing: false
+
+assets:
+  root: src/research_ideation_agent/assets
+  version: simple
+
+mcp:
+  profile: scholar-gateway
+  scholar_gateway:
+    command: scholar-gateway-mcp
+    cutoff_date: "2026-06-09"
+    restrict_domains: true
+    strict_filtering: true
+    mode: rules
+    format: markdown
+    references_dir: references
+    required_env_vars:
+      - WTS_API_KEY
+    optional_env_vars:
+      - WTS_BASE_URL
+    startup_timeout_seconds: 60
+    tool_timeout_seconds: 600
+    approval_mode: approve
+
+permissions:
+  approval_policy: auto
+
+budgets:
+  timeout_seconds: 7200
+  max_turns: null
+  max_cost_usd: null
+
+repair:
+  strategy: external-loop
+  max_attempts: 1
+
+skills:
+  selected: []
+
+subagents:
+  selected: []
+
+logging:
+  write_run_record: true
+  retain_event_log: true
+
+adapters:
+  codex:
+    api_key_env: GPT_API_KEY
+    base_url_env: GPT_API_BASE_URL
+    sandbox: workspace_write
+    approval_mode: auto_review
+    network_access_enabled: true
+    cleanup_codex_home: true
+    disabled_features:
+      # force literature retrieval through scholar-gateway MCP, not Codex native web/browser tools
+      - browser_use
+      - browser_use_external
+      - in_app_browser
+      - standalone_web_search
+      - web_search_cached
+      - web_search_request
+      # no user elicitation, app/plugin suggestions, image/computer tools, or external app surfaces
+      - apps
+      - auth_elicitation
+      - computer_use
+      - image_generation
+      - plugin_sharing
+      - plugins
+      - request_permissions_tool
+      - tool_call_mcp_elicitation
+      - tool_suggest

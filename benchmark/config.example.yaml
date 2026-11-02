@@ -1,0 +1,36 @@
+s2:
+  api_keys: []
+  rps: 1.0
+  search_verify_threshold: 0.90
+
+arxiv:
+  timeout_seconds: 300
+  user_agent: "ideaeval-benchmark/1.0"
+
+somark:
+  api_url: ""  # e.g. https://<your-somark-host>/extract; leave empty if you bring your own markdowns
+  extract_config:
+    image_understanding: false
+    enable_title_level_recognition: true
+
+llm:
+  provider: "openai"
+  model: "deepseek-v4-pro"
+  max_retries: 3
+  max_tokens: 2048
+  temperature: 0.1
+
+pipeline:
+  workers: 16
+  cache_dir: "cache"
+  max_table_chars: 16000
+
+paths:
+  data_dir: "data"
+  markdown_dir: "data/markdown"
+  metadata_file: "data/arxiv/arxiv_2025sep_2026jan_metadata_filtered.jsonl"
+  experiments_dir: "experiments"
+  datasets_dir: "datasets"
+  cache_dir: "cache"
+  tmp_pdf_dir: "cache/tmp_pdf"
+  errors_file: "logs/batch_pdf2md_errors.jsonl"

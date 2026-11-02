@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Evolution runtime artifacts (large, generated)
+evolution/versions/
+evolution/state.json
+
+# Datasets (local only)
+datasets/
+
+# Config with secrets
+config.yaml
+agent_config.yaml
+
+# Run artifacts
+results/
+*.invalid

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>adapter_events viewer</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-title">runs</div>
+      <button id="refresh-runs" class="icon-btn" title="refresh list">↻</button>
+    </div>
+    <div class="sidebar-meta" id="runs-root">—</div>
+    <ul id="runs-list"></ul>
+  </aside>
+
+  <div id="main">
+    <header id="toolbar">
+      <div class="toolbar-row primary">
+        <span class="run-id" id="run-id">—</span>
+        <span class="model" id="model">—</span>
+        <span class="status-badge" id="status-badge" data-status="unknown">unknown</span>
+      </div>
+      <div class="toolbar-row counters">
+        <span>events <b id="count-events">0</b></span>
+        <span>tools <b id="count-tools">0</b></span>
+        <span>errors <b id="count-errors">0</b></span>
+        <span>retries <b id="count-retries">0</b></span>
+        <span>phases <b id="count-phases">0</b></span>
+        <label><input type="checkbox" id="filter-thinking" checked /> thinking</label>
+        <label><input type="checkbox" id="filter-system" /> system</label>
+        <label><input type="checkbox" id="filter-retries" checked /> retries</label>
+        <button id="jump-timeline" class="jump-btn" title="jump to timeline">↑ timeline</button>
+        <button id="jump-stats" class="jump-btn" title="jump to stats">↓ stats</button>
+        <input type="search" id="search" placeholder="search events…" />
+      </div>
+      <div class="toolbar-row topic" id="topic"></div>
+      <div id="banner" class="banner hidden"></div>
+    </header>
+    <main id="events-section" class="section-block hidden">
+      <h2 class="section-title">timeline</h2>
+      <div id="events"></div>
+    </main>
+    <section id="stats-panel" class="section-block stats-panel hidden">
+      <header class="stats-panel-head">
+        <h2 class="section-title">stats</h2>
+        <button id="stats-refresh-btn" class="icon-btn" title="refresh stats">↻</button>
+      </header>
+      <div id="stats-grid"></div>
+      <div class="stats-meta"><span id="stats-computed-at"></span></div>
+    </section>
+    <div id="empty-state" class="empty-state hidden">
+      <div>Pick a run from the sidebar to view its events.</div>
+    </div>
+  </div>
+
+  <div id="trace-summary-bar" class="trace-summary-bar hidden" role="status" aria-live="polite">
+    <div class="trace-summary-run">
+      <span class="trace-summary-run-id" id="trace-summary-run-id">—</span>
+      <span class="trace-summary-status" id="trace-summary-status" data-status="unknown">unknown</span>
+    </div>
+    <div class="trace-summary-items" id="trace-summary-items"></div>
+    <button id="trace-summary-stats-btn" class="trace-summary-btn" title="jump to full stats">stats</button>
+  </div>
+
+  <script src="/static/render_claude.js"></script>
+  <script src="/static/render_codex.js"></script>
+  <script src="/static/stats.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
