@@ -14,7 +14,7 @@ grouped together.
     matters, not its label.
 
 Usage:
-    uv run python scripts/build_topic_level_clusters.py \\
+    uv run python scripts/taxonomy/build_topics.py \\
         --tree     experiments/clustering_v3/checkpoint_normalized.json \\
         --clusters experiments/clustering_v3/clusters.json \\
         --output   experiments/clustering_v3/topic_level_clusters.json \\

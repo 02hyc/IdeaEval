@@ -24,13 +24,13 @@ Stage machine (driven by checkpoint._pipeline_stage):
   Stage 5-7 Reassign unassigned, drop small clusters, RQ generation, coherence
 
 Usage (from scratch):
-    uv run python scripts/run_taxoadapt_v3.py \\
+    uv run python scripts/taxonomy/build_taxonomy.py \\
         --input <papers.jsonl> --fields <fields.jsonl> --benchmarks <benchmarks.jsonl> \\
         --output-dir experiments/clustering_v3 \\
         --initial-topics 20 --max-workers 100
 
 Usage (warm start from V2):
-    uv run python scripts/run_taxoadapt_v3.py \\
+    uv run python scripts/taxonomy/build_taxonomy.py \\
         --v2-checkpoint experiments/clustering_v2/checkpoint_normalized.json \\
         --input <papers.jsonl> ... (same as above)
 """

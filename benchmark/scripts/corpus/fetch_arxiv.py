@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Fetch arXiv papers via arXiv API + optional Semantic Scholar citation enrichment.
+"""Fetch arXiv submissions by category and date range via the arXiv API.
 
-Two-phase approach:
-  Phase 1: Query arXiv API by category and date range to get complete metadata.
-  Phase 2 (optional): Enrich with S2 citation counts via batch lookup.
+Writes <output-dir>/submissions.jsonl (id, title, abstract, authors, dates, categories)
+and a summary of per-category, per-month counts. The released corpus was fetched in
+two runs, one per venue key:
 
 Usage:
-    python3 citation_analysis/historical/fetch_arxiv_s2_bulk.py \
-        --output-dir citation_analysis/historical/papers/arxiv_2025q4_2026q1 \
-        --start-date 2025-10-01 --end-date 2026-03-31 \
-        --categories cs.LG,cs.AI,cs.CL,cs.CV,stat.ML \
-        --venue-key arxiv_2025q4_2026q1
+    uv run python scripts/corpus/fetch_arxiv.py --output-dir data/arxiv/2025_sep \
+        --start-date 2025-09-01 --end-date 2025-09-30 --venue-key arxiv_2025_sep
+    uv run python scripts/corpus/fetch_arxiv.py --output-dir data/arxiv/2025q4_2026q1 \
+        --start-date 2025-10-01 --end-date 2026-03-31 --venue-key arxiv_2025q4_2026q1
 """
 
 from __future__ import annotations
@@ -18,7 +17,6 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import os
 import re
 import time
 import xml.etree.ElementTree as ET
@@ -36,12 +34,6 @@ log = logging.getLogger(__name__)
 ARXIV_API_URL = "https://export.arxiv.org/api/query"
 ARXIV_NS = {"atom": "http://www.w3.org/2005/Atom", "arxiv": "http://arxiv.org/schemas/atom"}
 ARXIV_REQUEST_DELAY = 3.5  # seconds between arXiv API requests
-
-# S2 API for citation enrichment
-S2_BASE = "https://api.semanticscholar.org/graph/v1"
-S2_API_KEYS: List[str] = [
-    k.strip() for k in os.environ.get("S2_API_KEYS", "").split(",") if k.strip()
-]
 
 MIN_ABSTRACT_LEN = 50
 PAGE_SIZE = 500  # arXiv API max per request is 2000, 500 is more reliable
@@ -333,7 +325,7 @@ def fetch_all(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Fetch arXiv papers via arXiv API for Idea-Bench pipeline."
+        description="Fetch arXiv submissions via the arXiv API."
     )
     parser.add_argument(
         "--output-dir", type=str, required=True,

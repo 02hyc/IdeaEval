@@ -1,4 +1,4 @@
-"""Phase 0b: Batch structured-field extraction for all filtered arxiv papers.
+"""Extract structured research fields for every filtered paper.
 
 Extracts three structured fields per paper from title + abstract:
   - research_problem: specific problem the paper addresses (1-2 sentences)
@@ -6,7 +6,7 @@ Extracts three structured fields per paper from title + abstract:
   - application_domain: application domain or "general"
 
 Usage:
-    python run_field_extraction.py [--workers 128] [--limit 50] [--model deepseek-v4-pro]
+    uv run python scripts/features/extract_fields.py [--workers 128] [--limit 50] [--model deepseek-v4-pro]
 """
 
 from __future__ import annotations
@@ -16,16 +16,12 @@ import json
 import logging
 import os
 import random
-import sys
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_ROOT / "src"))
-
-from ideaeval_benchmark.config import LLMSettings
+from ideaeval_benchmark.config import PROJECT_ROOT, LLMSettings
 from ideaeval_benchmark.llm_client import LLMClient
 
 log = logging.getLogger(__name__)

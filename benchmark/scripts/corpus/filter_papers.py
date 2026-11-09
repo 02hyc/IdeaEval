@@ -1,7 +1,7 @@
 """Filter papers: remove 2026-02/03, then LLM-filter benchmark/dataset/technical reports.
 
 Usage:
-    uv run python run_filter_papers.py --workers 64
+    uv run python scripts/corpus/filter_papers.py --workers 64
 """
 
 import argparse

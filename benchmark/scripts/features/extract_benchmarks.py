@@ -1,11 +1,11 @@
-"""Phase 0: Batch benchmark/dataset extraction for all filtered arxiv papers.
+"""Extract the benchmarks and datasets each filtered paper evaluates on.
 
-Reads markdowns from the Idea-Bench markdown cache, extracts benchmarks via
-the existing benchmarks.py pipeline, and writes results to a JSONL file with
-checkpoint/resume support.
+Reads paper Markdown from data/markdown/ (stage 1f), extracts benchmarks from the
+paper's tables and text with ideaeval_benchmark.benchmarks, and writes a JSONL
+file with checkpoint/resume support.
 
 Usage:
-    python run_benchmark_extraction.py [--workers 256] [--output benchmarks_extracted.jsonl]
+    uv run python scripts/features/extract_benchmarks.py [--workers 256] [--output benchmarks_extracted.jsonl]
 """
 
 from __future__ import annotations
@@ -15,16 +15,13 @@ import json
 import logging
 import os
 import re
-import sys
 import time
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
 from ideaeval_benchmark.benchmarks import extract_benchmarks, extract_table_excerpts
-from ideaeval_benchmark.config import LLMSettings
+from ideaeval_benchmark.config import PROJECT_ROOT, LLMSettings
 from ideaeval_benchmark.llm_client import LLMClient
 from ideaeval_benchmark.models import PaperInput
 

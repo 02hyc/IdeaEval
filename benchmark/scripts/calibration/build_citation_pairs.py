@@ -7,11 +7,11 @@ gap as the quality signal. Outputs balanced tie / non-tie pairs across diverse t
 Filters out "(Other)" catch-all topic nodes. Annotates each paper with its leaf node.
 
 Usage:
-    uv run python scripts/build_ranker_pairs.py \
-        --clusters experiments/clustering_v2/clusters_reassigned.json \
-        --checkpoint experiments/clustering_v2/checkpoint_normalized.json \
-        --metadata /path/to/arxiv_metadata.jsonl \
-        --output experiments/clustering_v2/ranker_pairs.json \
+    uv run python scripts/calibration/build_citation_pairs.py \
+        --clusters experiments/clustering_v3/clusters_reviewed.json \
+        --checkpoint experiments/clustering_v3/checkpoint_normalized.json \
+        --metadata data/inputs/arxiv_metadata.jsonl \
+        --output experiments/clustering_v3/ranker_pairs.json \
         --pairs-per-topic 10 \
         --tie-ratio 0.3 \
         --gap-threshold 11 \

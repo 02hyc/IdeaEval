@@ -1,89 +1,59 @@
 PYTHON = uv run python
+META = data/arxiv/arxiv_2025sep_2026jan_metadata_filtered.jsonl
+INPUTS = data/inputs
+TAXO = experiments/clustering_v3
 
-.PHONY: all fetch pdf2md filter extract cluster rebalance verify deep-review citations windows datecutoff merge proposals help
+.PHONY: help corpus features inputs taxonomy topics proposals calibration
 
 help:
-	@echo "Ideation-Bench Pipeline Stages:"
+	@echo "IdeaEval benchmark pipeline (see docs/PIPELINE.md):"
 	@echo ""
-	@echo "  make fetch        - Stage 0a: Crawl ArXiv metadata"
-	@echo "  make pdf2md       - Stage 0b: Download PDFs + convert to markdown"
-	@echo "  make filter       - Stage 0c: Date + type filtering"
-	@echo "  make extract      - Stage 1:  Field + benchmark extraction"
-	@echo "  make cluster      - Stage 2a: TaxoAdapt clustering"
-	@echo "  make rebalance    - Stage 2b: Rebalance cluster sizes"
-	@echo "  make verify       - Stage 3a: RQ generation + coherence verification"
-	@echo "  make deep-review  - Stage 3b: Full-text deep review"
-	@echo "  make citations    - Stage 3c: Citation timeline fetching"
-	@echo "  make windows      - Stage 3d: Build cluster windows (time slicing + citation stats)"
-	@echo "  make datecutoff   - Stage 3e: Date-cutoff leak filtering"
-	@echo "  make merge        - Stage 3f: Embedding-based cluster merging"
-	@echo "  make proposals    - Stage 4:  Paper-to-proposal conversion"
+	@echo "  make corpus       - 1: filter papers, refresh citations, check date leaks, PDF -> Markdown"
+	@echo "  make features     - 2: extract research fields and benchmarks"
+	@echo "  make inputs       -    drop zero-citation papers, collect taxonomy inputs"
+	@echo "  make taxonomy     - 3a: build the taxonomy (halts twice for human review; rerun to resume)"
+	@echo "  make topics       - 3b-d: normalize labels, coherence review, topic-level clusters"
+	@echo "  make proposals    - 5: paper-to-proposal conversion"
+	@echo "  make calibration  - 6: citation-labeled calibration pairs + date-leak check"
 	@echo ""
-	@echo "See docs/PIPELINE.md for full documentation."
+	@echo "Fetching arXiv (1a) and cohort curation (4) are run by hand; see docs/PIPELINE.md."
 
-fetch:
-	$(PYTHON) scripts/fetch_arxiv_s2_bulk.py
+corpus:
+	$(PYTHON) scripts/corpus/filter_papers.py --workers 64
+	$(PYTHON) scripts/corpus/update_citation_counts.py --input $(META)
+	$(PYTHON) scripts/corpus/check_date_leaks.py --metadata $(META) --papers-dir data/markdown --output-dir $(TAXO)
+	$(PYTHON) scripts/corpus/pdf_to_markdown.py --workers 32
 
-pdf2md:
-	$(PYTHON) scripts/run_batch_pdf2md.py --workers 32
+features:
+	$(PYTHON) scripts/features/extract_fields.py --workers 128
+	$(PYTHON) scripts/features/extract_benchmarks.py --workers 256
 
-filter:
-	$(PYTHON) scripts/run_filter_papers.py --workers 64
+inputs:
+	mkdir -p $(INPUTS)
+	$(PYTHON) -c "import json,sys; [print(l, end='') for l in open(sys.argv[1]) if (json.loads(l).get('s2_citation_count') or 0) > 0]" \
+		data/arxiv/arxiv_2025sep_2026jan_metadata_filtered_citation_updated.jsonl > $(INPUTS)/arxiv_metadata.jsonl
+	cp data/field_extraction/fields_extracted.jsonl data/benchmark_extraction/benchmarks_extracted.jsonl $(INPUTS)/
 
-extract:
-	$(PYTHON) scripts/run_field_extraction.py --workers 256
-	$(PYTHON) scripts/run_benchmark_extraction.py --workers 256
+taxonomy:
+	$(PYTHON) scripts/taxonomy/build_taxonomy.py \
+		--input $(INPUTS)/arxiv_metadata.jsonl \
+		--fields $(INPUTS)/fields_extracted.jsonl \
+		--benchmarks $(INPUTS)/benchmarks_extracted.jsonl \
+		--output-dir $(TAXO) --min-leaf 10 --max-leaf 50 --max-depth 6
 
-cluster:
-	$(PYTHON) scripts/run_taxoadapt.py \
-		--input data/arxiv/arxiv_2025sep_2026jan_metadata_filtered.jsonl \
-		--output-dir experiments/clustering_results/ \
-		--benchmarks data/benchmark_extraction/benchmarks_extracted.jsonl \
-		--fields data/field_extraction/fields_extracted.jsonl \
-		--min-leaf 30 --max-leaf 70
-
-rebalance:
-	$(PYTHON) scripts/run_rebalance.py \
-		experiments/clustering_results/taxonomy_tree.json \
-		experiments/clustering_results_rebalanced/
-
-verify:
-	$(PYTHON) scripts/run_verify.py \
-		--clusters experiments/clustering_results_rebalanced/clusters.json \
-		--input data/arxiv/arxiv_2025sep_2026jan_metadata_filtered.jsonl \
-		--output-dir experiments/verification/
-
-deep-review:
-	$(PYTHON) scripts/run_deep_review.py \
-		--clusters experiments/verification/clusters_labeled.json \
-		--output-dir experiments/deep_review/ \
-		--markdown-dir data/markdown/
-
-citations:
-	$(PYTHON) scripts/fetch_citation_timelines.py
-
-windows:
-	$(PYTHON) scripts/build_cluster_windows.py \
-		--clusters experiments/clustering_results_taxoadapt_rebalanced/clusters.json \
-		--metadata data/arxiv/arxiv_2025sep_2026jan_metadata_filtered.jsonl \
-		--citations datasets/citation_timelines.jsonl \
-		--fields data/field_extraction/fields_extracted.jsonl \
-		--output datasets/cluster_windows_all.jsonl
-
-datecutoff:
-	$(PYTHON) scripts/filter_datecutoff_leaks.py --workers 8
-
-merge:
-	$(PYTHON) scripts/merge_clusters_embedding.py \
-		--clusters experiments/clustering_results_rebalanced/clusters.json \
-		--tree experiments/clustering_results/taxonomy_tree.json \
-		--output-dir experiments/clustering_results_merged/ \
-		--target-count 480 --max-size 100
+topics:
+	$(PYTHON) scripts/taxonomy/normalize_labels.py --checkpoint $(TAXO)/checkpoint.json --output-dir $(TAXO)
+	$(PYTHON) scripts/taxonomy/review_coherence.py --checkpoint $(TAXO)/checkpoint_normalized.json --output-dir $(TAXO) \
+		--input $(INPUTS)/arxiv_metadata.jsonl --fields $(INPUTS)/fields_extracted.jsonl --benchmarks $(INPUTS)/benchmarks_extracted.jsonl
+	$(PYTHON) scripts/taxonomy/build_topics.py --tree $(TAXO)/checkpoint_normalized.json \
+		--clusters $(TAXO)/clusters_reviewed.json --output $(TAXO)/topic_level_clusters.json --max-topic-size 150
 
 proposals:
-	uv run paper2proposal \
-		--papers-dir data/markdown/ \
-		--output-dir results/proposals/ \
-		--workers 6
+	uv run paper2proposal --papers-dir data/markdown/ --output-dir results/proposals/ --workers 6
 
-all: fetch pdf2md filter extract cluster rebalance verify deep-review citations windows datecutoff merge proposals
+calibration:
+	$(PYTHON) scripts/calibration/build_citation_pairs.py --clusters $(TAXO)/clusters_reviewed.json \
+		--checkpoint $(TAXO)/checkpoint_normalized.json --metadata $(INPUTS)/arxiv_metadata.jsonl \
+		--output $(TAXO)/ranker_pairs.json
+	$(PYTHON) scripts/calibration/check_pair_date_leaks.py --pairs $(TAXO)/ranker_pairs.json \
+		--metadata $(INPUTS)/arxiv_metadata.jsonl --output-dir $(TAXO)

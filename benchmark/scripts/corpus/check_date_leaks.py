@@ -5,7 +5,7 @@ Reads the arxiv metadata JSONL, runs S2 + CrossRef leak detection on each paper,
 and outputs a corrected metadata file with leak_date filled in where applicable.
 
 Usage:
-    uv run python scripts/check_date_leaks_full.py \
+    uv run python scripts/corpus/check_date_leaks.py \
         --metadata /path/to/arxiv_metadata.jsonl \
         --papers-dir /path/to/markdowns \
         --output-dir experiments/clustering_v3 \
@@ -19,14 +19,9 @@ import asyncio
 import json
 import logging
 import os
-import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from check_date_leaks import (
-    run_checks,
-    parse_date,
-)
+from ideaeval_benchmark.date_leaks import parse_date, run_checks
 
 log = logging.getLogger(__name__)
 

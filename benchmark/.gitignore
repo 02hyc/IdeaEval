@@ -25,9 +25,6 @@ experiments/
 # Topic browser packaged tarballs
 topic_browser*.tar.gz
 
-# Clustering results (data products)
-clustering_results*/
-
 # Logs
 *.log
 logs/

@@ -1,7 +1,7 @@
 """Batch PDF download + Somark markdown conversion for all arxiv papers.
 
 Usage:
-    uv run python run_batch_pdf2md.py --workers 32
+    uv run python scripts/corpus/pdf_to_markdown.py --workers 32
 """
 
 import argparse

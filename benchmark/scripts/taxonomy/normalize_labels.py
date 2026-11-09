@@ -7,9 +7,9 @@ to concise noun-phrase labels, writes normalized checkpoint + HTML visualization
 Does NOT overwrite original files.
 
 Usage:
-    uv run python scripts/normalize_tree_labels.py \
-        --checkpoint experiments/clustering_v2/checkpoint.json \
-        --output-dir experiments/clustering_v2 \
+    uv run python scripts/taxonomy/normalize_labels.py \
+        --checkpoint experiments/clustering_v3/checkpoint.json \
+        --output-dir experiments/clustering_v3 \
         --max-workers 50
 """
 

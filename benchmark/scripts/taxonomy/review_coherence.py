@@ -5,7 +5,7 @@ Only kicks papers that are clearly unrelated to the cluster topic.
 Does NOT overwrite existing files — outputs to new files.
 
 Usage:
-    uv run python scripts/run_coherence_review.py \\
+    uv run python scripts/taxonomy/review_coherence.py \\
         --checkpoint experiments/clustering_v3/checkpoint_normalized.json \\
         --output-dir experiments/clustering_v3 \\
         --input      $SHARED_INPUTS_DIR/arxiv_metadata.jsonl \\
