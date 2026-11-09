@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" aria-label="Ideation baseline: a research direction and a cutoff date t go to a coding agent (Claude Code or Codex). The agent searches literature only through the scholar-gateway MCP server, whose results are filtered to before t by a search backend. In the scientific-hypothesis-generator setup it also uses skills and a reviewer subagent. It writes notes and proposal.md, which is checked for required sections; a failed check sends it back to the same session for repair.">
+<style>
+:root{--ink:#292d26;--mute:#8b8f84;--line:#cdd0c4;--acc:#b94228;--paper:#fbfaf5}
+text{font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;fill:var(--ink);font-size:14px}
+.m{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;fill:var(--mute)}
+.lab{font-size:12px;fill:var(--mute)}
+.i{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-style:italic}
+.box{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
+.opt{fill:none;stroke:var(--ink);stroke-width:1.1;stroke-dasharray:4 4}
+.doc{fill:var(--paper);stroke:var(--ink);stroke-width:1.1}
+.ln{fill:none;stroke:var(--line);stroke-width:1.2}
+.dash{fill:none;stroke:var(--mute);stroke-width:1.1;stroke-dasharray:3 4}
+.ah{fill:none;stroke:var(--line);stroke-width:1.2}
+.ahd{fill:none;stroke:var(--mute);stroke-width:1.1}
+.acc{fill:var(--acc)}
+</style>
+<title>Ideation baseline</title>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="ah" d="M2 1L9 5L2 9"/></marker>
+  <marker id="as" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="ah" d="M8 1L1 5L8 9"/></marker>
+  <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="ahd" d="M2 1L9 5L2 9"/></marker>
+</defs>
+
+<!-- inputs -->
+<text class="lab" x="20" y="128">research direction</text>
+<text class="lab" x="20" y="170">cutoff <tspan class="i" style="font-size:13px;fill:var(--ink)">t</tspan></text>
+<path class="ln" d="M126 124C160 124 170 146 196 146" marker-end="url(#a)"/>
+<path class="ln" d="M66 166C140 166 170 152 196 150" marker-end="url(#a)"/>
+<text class="m" x="20" y="194">inputs/ideaeval_bench_inputs.json</text>
+
+<!-- agent -->
+<rect class="box" x="200" y="120" width="180" height="56" rx="7"/>
+<text x="290" y="145" text-anchor="middle">Coding agent</text>
+<text class="m" x="290" y="163" text-anchor="middle">Claude Code · Codex</text>
+
+<!-- optional skills / reviewer -->
+<rect class="opt" x="186" y="26" width="96" height="36" rx="6"/>
+<text x="234" y="49" text-anchor="middle" style="font-size:13px">skills</text>
+<rect class="opt" x="296" y="26" width="110" height="36" rx="6"/>
+<text x="351" y="49" text-anchor="middle" style="font-size:13px">reviewer</text>
+<path class="dash" d="M234 62V114" marker-end="url(#ad)"/>
+<path class="dash" d="M340 62V114" marker-end="url(#ad)"/>
+<text class="m" x="420" y="40">scientific-hypothesis-</text>
+<text class="m" x="420" y="54">generator only</text>
+
+<!-- MCP tools -->
+<path class="ln" d="M290 182V224" marker-start="url(#as)" marker-end="url(#a)"/>
+<rect class="box" x="160" y="228" width="260" height="50" rx="7"/>
+<text x="290" y="250" text-anchor="middle">scholar-gateway MCP</text>
+<text class="m" x="290" y="267" text-anchor="middle">search · fetch · extract · summarize</text>
+<path class="dash" d="M420 253H462" marker-end="url(#ad)"/>
+<text class="lab" x="470" y="250">search backend</text>
+<text class="m" x="470" y="266">only results before <tspan class="i" style="font-size:12px;fill:var(--ink)">t</tspan></text>
+
+<!-- workspace -->
+<path class="ln" d="M380 148H446" marker-end="url(#a)"/>
+<path class="doc" d="M456 118h14l6 6v20h-20z"/><path class="doc" d="M462 124h14l6 6v20h-20z"/>
+<text class="m" x="490" y="138">notes/</text>
+<path class="doc" d="M459 158h14l6 6v20h-20z"/>
+<text class="m" x="490" y="176">proposal.md</text>
+<path class="ln" d="M580 148H626" marker-end="url(#a)"/>
+
+<!-- validation + repair -->
+<rect class="box" x="630" y="120" width="140" height="56" rx="7"/>
+<text x="700" y="145" text-anchor="middle">Validate</text>
+<text class="m" x="700" y="163" text-anchor="middle">required sections</text>
+<path class="dash" d="M700 120C700 80 300 80 300 114" marker-end="url(#ad)"/>
+<text class="m" x="500" y="78" text-anchor="middle">repair in the same session</text>
+
+<path class="ln" d="M770 148H816" marker-end="url(#a)"/>
+<path class="doc" d="M826 136h14l6 6v20h-20z"/>
+<text x="858" y="153">proposal.md</text>
+<text class="m" x="826" y="186">+ run_record.json</text>
+</svg>

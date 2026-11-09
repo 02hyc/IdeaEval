@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 250" width="960" height="250" aria-label="Benchmark pipeline: corpus (arXiv fetch, type filter, citation refresh, date-leak check), features (research problem, task formulation, benchmarks), taxonomy (modified TaxoAdapt with human review, leaves of 10 to 50 papers, topics of at most 150 papers), cohorts (31-day windows, LLM-judged cleaning, 91 cohorts over 40 topics; curated without released code), proposals (paper2proposal, results replaced by TBD, 1,330 proposals). Corpus, cohorts and proposals are released on Hugging Face.">
+<style>
+:root{--ink:#292d26;--mute:#8b8f84;--line:#cdd0c4;--acc:#b94228;--paper:#fbfaf5}
+text{font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;fill:var(--ink);font-size:14px}
+.m text,text.m{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;fill:var(--mute)}
+.tag{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:10.5px;fill:var(--mute)}
+.lg{font-size:12px;fill:var(--mute)}
+.box{fill:var(--paper);stroke:var(--ink);stroke-width:1.2}
+.manual{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 4}
+.ln{fill:none;stroke:var(--line);stroke-width:1.2}
+.ah{fill:none;stroke:var(--line);stroke-width:1.2}
+.dot{fill:var(--acc)}
+</style>
+<title>Benchmark construction pipeline</title>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="ah" d="M2 1L9 5L2 9"/></marker>
+</defs>
+
+<!-- stage boxes -->
+<text class="tag" x="20" y="48">scripts/corpus/</text>
+<rect class="box" x="20" y="58" width="150" height="50" rx="7"/>
+<text x="95" y="88" text-anchor="middle">Corpus</text>
+<circle class="dot" cx="158" cy="70" r="3.5"/>
+
+<path class="ln" d="M170 83H206" marker-end="url(#a)"/>
+<text class="tag" x="212" y="48">scripts/features/</text>
+<rect class="box" x="212" y="58" width="150" height="50" rx="7"/>
+<text x="287" y="88" text-anchor="middle">Features</text>
+
+<path class="ln" d="M362 83H398" marker-end="url(#a)"/>
+<text class="tag" x="404" y="48">scripts/taxonomy/</text>
+<rect class="box" x="404" y="58" width="150" height="50" rx="7"/>
+<text x="479" y="88" text-anchor="middle">Taxonomy</text>
+
+<path class="ln" d="M554 83H590" marker-end="url(#a)"/>
+<text class="tag" x="596" y="48">curated (no code)</text>
+<rect class="box" x="596" y="58" width="150" height="50" rx="7" style="stroke-dasharray:4 4"/>
+<text x="671" y="88" text-anchor="middle">Cohorts</text>
+<circle class="dot" cx="734" cy="70" r="3.5"/>
+
+<path class="ln" d="M746 83H782" marker-end="url(#a)"/>
+<text class="tag" x="788" y="48">paper2proposal/</text>
+<rect class="box" x="788" y="58" width="150" height="50" rx="7"/>
+<text x="863" y="88" text-anchor="middle">Proposals</text>
+<circle class="dot" cx="926" cy="70" r="3.5"/>
+
+<!-- details -->
+<g class="m">
+  <text x="20" y="134">arXiv API, 5 categories</text>
+  <text x="20" y="150">LLM type filter</text>
+  <text x="20" y="166">citation snapshot</text>
+  <text x="20" y="182">date-leak check</text>
+  <text x="20" y="204" style="fill:var(--ink)">35,505 papers</text>
+
+  <text x="212" y="134">research problem</text>
+  <text x="212" y="150">task formulation</text>
+  <text x="212" y="166">benchmarks, datasets</text>
+
+  <text x="404" y="134">modified TaxoAdapt</text>
+  <text x="404" y="150">human-reviewed merges</text>
+  <text x="404" y="166">leaves of 10–50 papers</text>
+  <text x="404" y="182">topics of ≤150 papers</text>
+  <text x="404" y="204" style="fill:var(--ink)">1,799 research questions</text>
+
+  <text x="596" y="134">31-day windows, cutoff t</text>
+  <text x="596" y="150">LLM-judged cleaning</text>
+  <text x="596" y="166">leak checks, refills</text>
+  <text x="596" y="204" style="fill:var(--ink)">91 cohorts, 40 topics</text>
+
+  <text x="788" y="134">results → TBD</text>
+  <text x="788" y="150">7-section template</text>
+  <text x="788" y="166">Claude Opus 4.6</text>
+  <text x="788" y="204" style="fill:var(--ink)">1,330 proposals</text>
+</g>
+
+<!-- legend -->
+<circle class="dot" cx="24" cy="236" r="3.5"/>
+<text class="lg" x="34" y="240">output released on Hugging Face</text>
+<rect class="manual" x="246" y="229" width="22" height="14" rx="3"/>
+<text class="lg" x="276" y="240">rules documented in docs/PIPELINE.md, code not released</text>
+</svg>

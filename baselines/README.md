@@ -2,6 +2,11 @@
 
 Ideation baselines for the IdeaEval benchmark. Given a research direction and a cutoff date, a CLI coding agent (Claude Code via the Claude Agent SDK, or Codex via the Codex SDK) reviews the pre-cutoff literature through cutoff-restricted search tools, analyzes gaps, proposes a falsifiable hypothesis, designs experiments, and writes `proposal.md`. The proposal uses the same section structure as the benchmark's human proposals, so the two can be compared directly by the evaluator.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../docs/figures/baselines-flow-dark.svg">
+  <img alt="A research direction and a cutoff date t go to a coding agent (Claude Code or Codex), which searches only through the scholar-gateway MCP server with results before t, writes notes and proposal.md, and repairs the proposal in the same session if it fails the structure check." src="../docs/figures/baselines-flow.svg" width="100%">
+</picture>
+
 The agent only designs future experiments. It never claims to have run them or reports empirical results.
 
 ## Two asset sets

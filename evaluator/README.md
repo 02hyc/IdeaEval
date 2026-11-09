@@ -6,25 +6,18 @@ A pairwise ranker for research proposals. Given two proposals and a cutoff date 
 
 ## Architecture
 
-```
-            ┌───────────────────────────┐
-cutoff t ──►│ Literature Review Agent   │──► literature_review.md + paper_summaries/ (reusable K_t)
-            └───────────────────────────┘
-                     │
-        ┌────────────┴────────────┐
-        ▼                         ▼
- Analysis Agent (A)        Analysis Agent (B)      ← extra searches per proposal
-        │                         │
-        └────────────┬────────────┘
-                     ▼
-               Judge Agent  ──► "A > B" or "A < B" + report
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../docs/figures/ranker-dark.svg">
+  <img alt="The Literature Review agent builds a shared review of work before t; two Analysis agents examine proposals A and B against it; the Judge reads the review, both reports and both proposals, and outputs which proposal is better." src="../docs/figures/ranker.svg" width="100%">
+</picture>
 
 - **Literature Review Agent** (`agents/agenthub/literature_review_agent.py`) surveys pre-cutoff work on the shared research direction. Its workspace is cached and reused for every pair in a cohort (`prebuild_lit_reviews.py`).
 - **Analysis Agents** (`agents/agenthub/research_agent.py`) analyze each proposal's incremental value against that review.
 - **Judge Agent** (`agents/agenthub/judge_agent.py`) reads the review, the local paper archive and both proposals, and makes the call. It is agentic: it can open archived papers and run small code checks in its workspace.
 
 All search goes through a cutoff-aware backend; see [`../docs/search_backend.md`](../docs/search_backend.md).
+
+The full pipeline is `rank_main.py`. The calibration runner (`scripts/run_literature_archive_judge_manifest.py`) takes a shorter path: it skips the two Analysis agents and gives the Judge the cached literature review and paper archive directly. In our experiments the shorter path was no less accurate.
 
 ### Judge prompts
 

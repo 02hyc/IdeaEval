@@ -2,6 +2,11 @@
 
 The pipeline used to build the IdeaEval benchmarks: arXiv corpus → research-question taxonomy → time-windowed cohorts → pre-experiment proposals, plus citation-labeled pairs for calibrating the evaluator.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../docs/figures/benchmark-pipeline-dark.svg">
+  <img alt="Benchmark pipeline: corpus, features, taxonomy, cohorts, proposals. Corpus, cohorts and proposals are released on Hugging Face; cohort curation rules are documented but the code is not released." src="../docs/figures/benchmark-pipeline.svg" width="100%">
+</picture>
+
 > The outputs are on Hugging Face (corpus, the 91-cohort ideation benchmark, calibration pairs); see the [top-level README](../README.md#data). You only need this pipeline to rebuild the benchmark or apply it to new papers.
 
 ## Setup

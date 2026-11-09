@@ -2,10 +2,15 @@
 
 **Impact-oriented evaluation of scientific hypothesis generation: benchmark, evaluator and ideation baselines.**
 
-📝 Blog post: [English](https://02hyc.github.io/Blog/posts/ideaeval/) · [中文](https://02hyc.github.io/Blog/posts/ideaeval-zh/)
+📝 Blog post: [English](https://02hyc.github.io/Blog/posts/ideaeval/) · [中文](https://02hyc.github.io/Blog/posts/ideaeval-zh/)<br>
 🤗 Data: [IdeaEval-Bench](https://huggingface.co/datasets/Yukino13/IdeaEval-Bench) · [IdeaEval-Calibration](https://huggingface.co/datasets/Yukino13/IdeaEval-Calibration) · [IdeaEval-Corpus](https://huggingface.co/datasets/Yukino13/IdeaEval-Corpus)
 
 IdeaEval asks whether an AI-generated research proposal would have been worth more to the field than the work humans actually did on the same problem at the same time. It turns recent arXiv papers back into pre-experiment proposals, groups them into cohorts that share a research question and a time window, and asks an ideation system to write a proposal for the same question with only the literature available before the cohort's cutoff date. An evaluator then compares the AI proposal against each human proposal in the cohort.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/overview-dark.svg">
+  <img alt="Overview: arXiv papers form cohorts that share a research question and a cutoff date t. Papers become human proposals; an ideation baseline writes an AI proposal using only literature before t. A pairwise judge compares them, and is itself checked on labeled calibration pairs." src="docs/figures/overview.svg" width="100%">
+</picture>
 
 **This project did not reach a positive result.** The evaluator agrees with citation-based labels on human-vs-human pairs, but it cannot reliably tell when an AI proposal is fundamentally flawed, so we could not produce trustworthy scores for ideation systems. The blog post explains what we tried and where it broke. We are releasing everything in case it is useful to whoever tries this next.
 
@@ -13,10 +18,10 @@ IdeaEval asks whether an AI-generated research proposal would have been worth mo
 
 | Directory | What it does |
 |---|---|
-| [`benchmark/`](benchmark/) | Builds the benchmarks: arXiv corpus (Sep 2025 – Jan 2026) → research-question clustering (modified TaxoAdapt) → 31-day cohorts → date-leak checks → paper-to-proposal conversion. |
+| [`benchmark/`](benchmark/) | Builds the benchmarks: arXiv corpus (Sep 2025 – Jan 2026) with date-leak checks → research-question taxonomy (modified TaxoAdapt) → 31-day cohorts → paper-to-proposal conversion, plus citation-labeled calibration pairs. |
 | [`evaluator/`](evaluator/) | The pairwise ranker: a literature-review agent, per-proposal analysis agents and a judge agent, plus the calibration runner. |
 | [`baselines/`](baselines/) | Ideation baselines: Claude Code or Codex with cutoff-restricted literature tools writes a proposal for each cohort. |
-| [`docs/`](docs/) | [`search_backend.md`](docs/search_backend.md): the cutoff-aware search interface the agents expect, and public components for building one. |
+| [`docs/`](docs/) | [`search_backend.md`](docs/search_backend.md): the cutoff-aware search interface the agents expect, and public components for building one. `figures/`: the diagrams in these READMEs. |
 
 Each directory is a self-contained [uv](https://docs.astral.sh/uv/) project with its own README.
 

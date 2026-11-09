@@ -98,6 +98,13 @@ uv run python scripts/taxonomy/build_taxonomy.py \
 
 The run **halts twice for human review**, at `audit_L1_dedup.json` and `audit_L2_dedup.json`. Edit the file and rerun the same command to resume. Each group in an audit file has `action` (`"merge"` or `"skip"`), `node_ids` (the first id is kept, the others are merged into it), and editable `suggested_label` / `suggested_description`. Concurrency is controlled by `--max-workers` (calls within a stage) and `--max-parallel-leaves` (leaves expanded at once); peak in-flight calls are about their product. Calls that need stronger reasoning (subtopic discovery, deduplication, final labels) can go to a separate endpoint via `THINKING_API_KEY` / `THINKING_BASE_URL` / `THINKING_MODEL`.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/figures/taxonomy-dark.svg">
+  <img alt="Schematic: the corpus splits level by level until every leaf holds 10 to 50 papers; each leaf is a research question. The highest node whose subtree holds at most 150 papers is a topic." src="../../docs/figures/taxonomy.svg" width="100%">
+</picture>
+
+*Schematic of the split (counts are illustrative): every leaf is a research question with 10–50 papers; a topic is the highest node whose subtree holds at most 150 papers (step 3d).*
+
 On our corpus this produced a 6-level tree with 1,799 leaves. Outputs in `experiments/clustering_v3/`: `checkpoint.json` (resumable tree), `clusters.json` (final leaves), `taxonomy_tree.json`, `verification_results.jsonl`, `stats.json`.
 
 **3b. Normalize labels.** Internal nodes get short noun-phrase labels; leaves keep question-form labels. Also writes an HTML view of the tree.
