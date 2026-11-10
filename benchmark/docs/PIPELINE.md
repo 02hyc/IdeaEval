@@ -18,7 +18,7 @@ Steps in `[brackets]` were done with ad-hoc code that is not part of this releas
 | Stage output | Released as |
 |---|---|
 | Filtered corpus (35,505 papers) | `IdeaEval-Corpus/papers.parquet` |
-| Final cohorts (91) and their papers' extracted fields | `IdeaEval-Bench/cohorts.jsonl` |
+| Final cohorts (91) and their papers' extracted fields | `IdeaEval-Bench/cohorts.parquet` |
 | Proposals | `IdeaEval-Bench/human_proposals.parquet` |
 
 ## 1. Corpus (`scripts/corpus/`)
@@ -134,7 +134,7 @@ uv run python scripts/taxonomy/build_topics.py \
 
 ## 4. [Cohorts] *(not included)*
 
-The final 91 cohorts are released in `IdeaEval-Bench/cohorts.jsonl`. They were built from `topic_level_clusters.json` with the following rules:
+The final 91 cohorts are released in `IdeaEval-Bench/cohorts.parquet`. They were built from `topic_level_clusters.json` with the following rules:
 
 1. **Topic selection.** 70 reasonably active topics were hand-picked.
 2. **Windows.** Within each topic, papers sorted by their corrected publication date were cut into 31-day windows (15-day step). A cohort's cutoff is the day before its earliest paper. Windows with fewer than 15 papers were dropped, leaving 118 candidate cohorts over 48 topics.
